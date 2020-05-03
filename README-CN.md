@@ -1,6 +1,6 @@
-# request-idlecallback
-[![NPM Version](http://img.shields.io/npm/v/request-idlecallback.svg?style=flat-square)](https://www.npmjs.com/package/request-idlecallback)
-[![Download Month](http://img.shields.io/npm/dm/request-idlecallback.svg?style=flat-square)](https://www.npmjs.com/package/request-idlecallback)
+# @livelybone/request-idle-callback
+[![NPM Version](http://img.shields.io/npm/v/@livelybone/request-idle-callback.svg?style=flat-square)](https://www.npmjs.com/package/@livelybone/request-idle-callback)
+[![Download Month](http://img.shields.io/npm/dm/@livelybone/request-idle-callback.svg?style=flat-square)](https://www.npmjs.com/package/@livelybone/request-idle-callback)
 ![gzip with dependencies: 0.9kb](https://img.shields.io/badge/gzip--with--dependencies-0.9kb-brightgreen.svg "gzip with dependencies: 0.9kb")
 ![typescript](https://img.shields.io/badge/typescript-supported-blue.svg "typescript")
 
@@ -28,7 +28,7 @@ https://github.com/livelybone/request-idle-callback#readme
 
 ## Installation
 ```bash
-npm i -S request-idlecallback
+npm i -S @livelybone/request-idle-callback
 ```
 
 ## Global name - The variable the module exported in `umd` bundle
@@ -39,7 +39,7 @@ npm i -S request-idlecallback
 
 ## Usage
 ```js
-import * as RIC from 'request-idlecallback'
+import * as RIC from '@livelybone/request-idle-callback'
 
 const id = RIC.requestIdleCallback(() => {
   // ... do something
@@ -51,21 +51,21 @@ RIC.cancelIdleCallback(id)
 ### use as a polyfill:
 > in js:
 ```js
-import 'request-idlecallback/lib/umd/polyfill';
+import '@livelybone/request-idle-callback/lib/umd/polyfill';
 ```
 
 > in html(CDN):
 ```html
-<script src="https://cdn.jsdelivr.net/npm/request-idlecallback/lib/umd/polyfill.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@livelybone/request-idle-callback/lib/umd/polyfill.js"></script>
 ```
 
-在 HTML 文件中直接引用，你可以在 [CDN: unpkg](https://unpkg.com/request-idlecallback/lib/umd/) 看到你能用到的所有 js 脚本
+在 HTML 文件中直接引用，你可以在 [CDN: unpkg](https://unpkg.com/@livelybone/request-idle-callback/lib/umd/) 看到你能用到的所有 js 脚本
 ```html
 <-- 然后使用你需要的 -->
-<script src="https://unpkg.com/request-idlecallback/lib/umd/<--module-->.js"></script>
+<script src="https://unpkg.com/@livelybone/request-idle-callback/lib/umd/<--module-->.js"></script>
 ```
 
-或者，你也可以使用 [CDN: jsdelivr](https://cdn.jsdelivr.net/npm/request-idlecallback/lib/umd/) 看到你能用到的所有 js 脚本
+或者，你也可以使用 [CDN: jsdelivr](https://cdn.jsdelivr.net/npm/@livelybone/request-idle-callback/lib/umd/) 看到你能用到的所有 js 脚本
 ```html
-<script src="https://cdn.jsdelivr.net/npm/request-idlecallback/lib/umd/<--module-->.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@livelybone/request-idle-callback/lib/umd/<--module-->.js"></script>
 ```

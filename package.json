@@ -1,5 +1,5 @@
 {
-  "name": "request-idlecallback",
+  "name": "@livelybone/request-idle-callback",
   "version": "1.0.0",
   "description": "A polyfill for `window.requestIdleCallback`, support NodeJs. It can be used for time slicing",
   "main": "./lib/umd/index.js",

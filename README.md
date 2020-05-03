@@ -1,6 +1,6 @@
-# request-idlecallback
-[![NPM Version](http://img.shields.io/npm/v/request-idlecallback.svg?style=flat-square)](https://www.npmjs.com/package/request-idlecallback)
-[![Download Month](http://img.shields.io/npm/dm/request-idlecallback.svg?style=flat-square)](https://www.npmjs.com/package/request-idlecallback)
+# @livelybone/request-idle-callback
+[![NPM Version](http://img.shields.io/npm/v/@livelybone/request-idle-callback.svg?style=flat-square)](https://www.npmjs.com/package/@livelybone/request-idle-callback)
+[![Download Month](http://img.shields.io/npm/dm/@livelybone/request-idle-callback.svg?style=flat-square)](https://www.npmjs.com/package/@livelybone/request-idle-callback)
 ![gzip with dependencies: 0.9kb](https://img.shields.io/badge/gzip--with--dependencies-0.9kb-brightgreen.svg "gzip with dependencies: 0.9kb")
 ![typescript](https://img.shields.io/badge/typescript-supported-blue.svg "typescript")
 
@@ -28,7 +28,7 @@ you can see the usage by run the example of the module, here is the step:
 
 ## Installation
 ```bash
-npm i -S request-idlecallback
+npm i -S @livelybone/request-idle-callback
 ```
 
 ## Global name - The variable the module exported in `umd` bundle
@@ -39,7 +39,7 @@ See what method or params you can use in [index.d.ts](./index.d.ts)
 
 ## Usage
 ```js
-import * as RIC from 'request-idlecallback'
+import * as RIC from '@livelybone/request-idle-callback'
 
 const id = RIC.requestIdleCallback(() => {
   // ... do something
@@ -51,21 +51,21 @@ RIC.cancelIdleCallback(id)
 ### use as a polyfill:
 > in js:
 ```js
-import 'request-idlecallback/lib/umd/polyfill';
+import '@livelybone/request-idle-callback/lib/umd/polyfill';
 ```
 
 > in html(CDN):
 ```html
-<script src="https://cdn.jsdelivr.net/npm/request-idlecallback/lib/umd/polyfill.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@livelybone/request-idle-callback/lib/umd/polyfill.js"></script>
 ```
 
-Use in html, see what you can use in [CDN: unpkg](https://unpkg.com/request-idlecallback/lib/umd/)
+Use in html, see what you can use in [CDN: unpkg](https://unpkg.com/@livelybone/request-idle-callback/lib/umd/)
 ```html
 <-- use what you want -->
-<script src="https://unpkg.com/request-idlecallback/lib/umd/<--module-->.js"></script>
+<script src="https://unpkg.com/@livelybone/request-idle-callback/lib/umd/<--module-->.js"></script>
 ```
 
-Or，see what you can use in [CDN: jsdelivr](https://cdn.jsdelivr.net/npm/request-idlecallback/lib/umd/)
+Or，see what you can use in [CDN: jsdelivr](https://cdn.jsdelivr.net/npm/@livelybone/request-idle-callback/lib/umd/)
 ```html
-<script src="https://cdn.jsdelivr.net/npm/request-idlecallback/lib/umd/<--module-->.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@livelybone/request-idle-callback/lib/umd/<--module-->.js"></script>
 ```
