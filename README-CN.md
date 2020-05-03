@@ -1,7 +1,7 @@
 # @livelybone/request-idle-callback
 [![NPM Version](http://img.shields.io/npm/v/@livelybone/request-idle-callback.svg?style=flat-square)](https://www.npmjs.com/package/@livelybone/request-idle-callback)
 [![Download Month](http://img.shields.io/npm/dm/@livelybone/request-idle-callback.svg?style=flat-square)](https://www.npmjs.com/package/@livelybone/request-idle-callback)
-![gzip with dependencies: 0.9kb](https://img.shields.io/badge/gzip--with--dependencies-0.9kb-brightgreen.svg "gzip with dependencies: 0.9kb")
+![gzip with dependencies: 1.1kb](https://img.shields.io/badge/gzip--with--dependencies-1.1kb-brightgreen.svg "gzip with dependencies: 1.1kb")
 ![typescript](https://img.shields.io/badge/typescript-supported-blue.svg "typescript")
 
 [English Document](./README.md)
@@ -59,6 +59,7 @@ import '@livelybone/request-idle-callback/lib/umd/polyfill';
 <script src="https://cdn.jsdelivr.net/npm/@livelybone/request-idle-callback/lib/umd/polyfill.js"></script>
 ```
 
+## CDN
 在 HTML 文件中直接引用，你可以在 [CDN: unpkg](https://unpkg.com/@livelybone/request-idle-callback/lib/umd/) 看到你能用到的所有 js 脚本
 ```html
 <-- 然后使用你需要的 -->
