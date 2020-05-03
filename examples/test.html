@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>request-idlecallback</title>
+
+    <!-- Inject some babel helpers for code running. it is not needed in a real babel project when you configure babel or there is no new feature of js -->
+    <!-- 为代码运行注入一些babel帮助函数。在真正的babel项目中，当已配置 babel 时，或者js没有新特性时，并不需要它 -->
+    <script src="https://cdn.jsdelivr.net/npm/@babel/polyfill/dist/polyfill.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/requestidlecallback"></script>
+
+    <script src="../lib/umd/index.js"></script>
+    <style>
+        .item {
+            margin: 15px 0;
+        }
+
+        .btn {
+            padding: 5px 30px;
+            font-size: 16px;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            background: #63a0ff;
+        }
+
+        .btn:focus {
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+<div id="module">
+    <div class="item">
+        <label for="select">select API:</label>
+        <select id="select" onchange="onChange()">
+            <option value="1">window.requestIdleCallback</option>
+            <option value="2" selected>request-idlecallback</option>
+            <option value="3">requestidlecallback</option>
+        </select>
+    </div>
+
+    <div class="item">
+        <label for="input">input run times: </label><input id="input" type="number" value="1000"
+                                                           onchange="changeTimes()">
+    </div>
+
+    <div class="item">
+        <button class="btn" onclick="run()">run</button>
+    </div>
+</div>
+<div id="extra" style="display: none">
+    <div>
+        Now you can:
+    </div>
+    <div>
+        1. do some interaction to verify whether the browser is blocked,
+        <label for="i">like input here:</label><input type="text" id="i">
+    </div>
+    <div>
+        2. see the behavior logs in dev-tool
+    </div>
+</div>
+
+<script>
+const input = document.getElementById('input')
+const select = document.getElementById('select')
+const input1 = document.getElementById('i')
+const extra = document.getElementById('extra')
+// const ric = requestIdleCallback
+let ric = RIC.requestIdleCallback
+let times = +input.value
+
+function onChange() {
+  const ev = window.event
+  const value = +ev.target.value
+  if (value === 2) ric = RIC.requestIdleCallback
+  else if (value === 3) ric = idleCallbackShim.request
+  else ric = window.requestIdleCallback
+}
+
+function changeTimes() {
+  const ev = window.event
+  times = +ev.target.value
+}
+
+function toggleExtra(bool) {
+  extra.setAttribute('style', 'display: ' + (bool ? 'block' : 'none'))
+  if (bool) {
+    select.setAttribute('disabled', 'true')
+    input.setAttribute('disabled', 'true')
+  } else {
+    select.removeAttribute('disabled')
+    input.removeAttribute('disabled')
+  }
+}
+
+function run() {
+  toggleExtra(true)
+  const start = Date.now()
+  let last
+  let duration = 1000 / 120
+
+  let k = 0
+  const pendingTime = []
+  const length = times
+  for (let i = 0; i <= length; i += 1) {
+    const t = Math.random() * duration
+    pendingTime.push(t)
+
+    ric((deadline) => {
+      last = Date.now()
+      const time = deadline.timeRemaining()
+      if (time > t) {
+        while (Date.now() - last - 2 < t) {
+          k += 1
+        }
+      }
+      console.log('log', i + 1, Date.now() - last, t, time)
+      last = Date.now()
+
+      if (i >= length) {
+        console.log('time', Date.now() - start)
+        setTimeout(() => toggleExtra(false))
+        console.log(i, length)
+      }
+    }, { timeout: i === times / 10 ? 30 : 0 })
+  }
+
+  console.log(pendingTime, k)
+}
+</script>
+</body>
+</html>
