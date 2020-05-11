@@ -19,21 +19,14 @@ export function createIdleDeadline(didTimeout: boolean): IdleDeadline {
   }
 }
 
-function runImmediateAfterOtherRafCbInOneFrame(cb: () => any) {
-  if (typeof Promise !== 'undefined' && typeof Promise.resolve === 'function') {
-    Promise.resolve().then(cb)
-  } else {
-    setTimeout(cb, 0)
-  }
-}
-
 let handleId: any
 
 export function runInIdleTimeOfFrame(queue: IdleTask[]) {
   cancelAnimationFrame(handleId)
 
   const run = () => {
-    runImmediateAfterOtherRafCbInOneFrame(() => {
+    // Run immediate after other raf callback in one frame
+    setTimeout(() => {
       let i = 0
       for (; timeRemaining() && i < queue.length; i += 1) {
         const task = queue[i]
@@ -47,21 +40,21 @@ export function runInIdleTimeOfFrame(queue: IdleTask[]) {
           task.done = true
         }
       }
-      // update the task queue. this is not pure
+      // Update the task queue. this is not pure
       queue.splice(0, i)
 
       endTimeOfLastFrame = now()
 
-      // run the rest of tasks in next loop
+      // Run the rest of tasks in next loop
       if (queue.length) runInIdleTimeOfFrame(queue)
     })
   }
 
   if (!DocVisibility.hidden) {
-    // run in idle time of next frame
+    // Run in idle time of next frame
     handleId = requestAnimationFrame(run)
   } else {
-    // run immediately when the doc is hidden,
+    // Run immediately when the doc is hidden,
     // because the requestAnimationFrame will be blocked when the doc is hidden
     run()
   }

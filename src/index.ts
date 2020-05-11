@@ -36,7 +36,7 @@ export function cancelIdleCallback(id: number) {
   }
 }
 
-// when the doc is hidden,
+// When the doc is hidden,
 // the requestAnimationFrame which the requestIdleCallback based on will be blocked,
 // so we should run the queue actively
 listenVisibilityChange(hidden => {
